@@ -9,3 +9,4 @@ let itCanbeUndefined: number;
 
 console.log(itCanbeUndefined);
 console.log(myName + 1);
+
