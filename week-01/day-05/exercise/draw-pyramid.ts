@@ -1,8 +1,8 @@
 'use strict';
 
- let lineCount: number = 4;
+ let lineCount: number = 5;
 
- for (let i: number = 0; i < 4; i++) {
+ for (let i: number = 0; i < lineCount; i++) {
     let row: string = '';
     for (let j: number = 0; j < lineCount - i; j++) {
       row += ' ';
