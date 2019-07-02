@@ -1,0 +1,22 @@
+.jumbotron {
+    margin-bottom: 0px;
+    color: white;
+    background-color: black;
+}
+
+.btn {
+    margin: 20px 0px;
+}
+
+
+.btn-success {
+    background-color: red;
+}
+
+.btn-danger {
+    background-color: green;
+}
+
+.btn-warning {
+    background-color: violet;
+}
