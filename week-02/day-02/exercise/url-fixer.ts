@@ -11,7 +11,7 @@ let changeTheWordBots: any = /bots/;
 let almostCorrectSentence: string = url.replace(changeTheWordBots, 'odds');
 
 
-let correctSentence = almostCorrectSentence.slice(0, -37) + ':' + almostCorrectSentence.slice(5);
+let correctSentence = almostCorrectSentence.slice(0, 5) + ':' + almostCorrectSentence.slice(5);
 
 url = correctSentence;
 
