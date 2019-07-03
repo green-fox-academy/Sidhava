@@ -11,17 +11,12 @@ const ctx = canvas.getContext('2d');
 // Draw at least 3 lines with that function using a loop.
 
 function drawLines(x, y) {
-
-
-    for (let i = 0; i < 4; i++) {
-        ctx.beginPath();
-        ctx.moveTo(x, y);
-        ctx.lineTo(300, 200);
-        ctx.stroke();
-        x += x;
-        y += y;
-    }
-
+    ctx.beginPath();
+    ctx.moveTo(x, y);
+    ctx.lineTo(300, 200);
+    ctx.stroke();
 }
 
-drawLines(25, 50);
+for (let i = 0; i < 4; i++) {
+    drawLines(50 * i, 50 * i);
+}
