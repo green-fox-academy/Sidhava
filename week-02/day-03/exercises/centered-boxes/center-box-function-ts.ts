@@ -17,7 +17,6 @@ let middleHeight: number = canvas.height / 2;
 ctx.strokeRect(middleWidth - (sizeofSquare / 2), middleHeight - (sizeofSquare / 2), sizeofSquare, sizeofSquare);
 }
 
-drawSquare(50);
 
 for (let i = 1; i < 4; i++) {
     drawSquare(50 * i);
