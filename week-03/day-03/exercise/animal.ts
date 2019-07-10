@@ -8,15 +8,15 @@ class Animal {
         this.thirst = thirst;
     }
 
-    eat() {
+    eat():number {
        return this.hunger -= 1;
     }
 
-    drink() {
+    drink(): number {
         return this.thirst -= 1;
     }
 
-    play() {
+    play(): number {
        return this.thirst ++ && this.hunger ++;
     }
 }
