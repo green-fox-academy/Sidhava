@@ -1,0 +1,40 @@
+.container {
+    display: flex;
+    width: 800px;
+    height: 800px;
+    padding: 0px;
+    background-color: black;
+    margin: auto;
+    justify-content: flex-start;
+}
+
+.header {
+    position: sticky;
+    top: 0;
+    width: 800px;
+    height: 60px;
+    background-color: purple;
+    margin: auto;
+}
+
+.link {
+    display: inline-block;
+    height: 40px;
+    width: 80px;
+    background-color: cyan;
+    margin: 10px;
+
+}
+
+.main-content {
+    height: 100%;
+    flex-grow: 2;
+    background-color: yellow;
+}
+
+.sidebar {
+    background-color: green;
+    flex-grow: 1;
+    height: 100%;
+}
+
