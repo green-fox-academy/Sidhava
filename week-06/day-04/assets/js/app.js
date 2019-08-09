@@ -40,6 +40,7 @@ let arrowRight = document.getElementsByClassName("arrowRight");
 let counter = 0;
 
 currentPic[0].style.backgroundImage = `url("${picture[0].url}")`;
+thumbnails[0].setAttribute('class', 'active');
 title[0].textContent = picture[0].title;
 paragraphs[0].textContent = picture[0].text;
 
@@ -50,6 +51,7 @@ paragraphs[0].textContent = picture[0].text;
 
 for (let i = 0; i < thumbnails.length; i++) {
   thumbnails[i].style.backgroundImage = `url("${picture[i].url}")`;
+
   thumbnails[i].onclick = function changeCurrentPic() {
     currentPic[0].style.backgroundImage = thumbnails[i].style.backgroundImage;
     title[0].textContent = picture[i].title;
@@ -58,70 +60,57 @@ for (let i = 0; i < thumbnails.length; i++) {
   };
 }
 
-arrowLeft[0].onclick = function changePictureToLeft() {
+function editTheCurrentPic() {
+    currentPic[0].style.backgroundImage =
+      thumbnails[counter].style.backgroundImage;
+    title[0].textContent = picture[counter].title;
+    paragraphs[0].textContent = picture[counter].text;
+}
+
+function changePictureToLeft() {
   counter--;
   if (counter === -1) {
     counter = picture.length - 1;
-    currentPic[0].style.backgroundImage =
-      thumbnails[counter].style.backgroundImage;
-      title[0].textContent = picture[counter].title;
-      paragraphs[0].textContent = picture[counter].text;
+    thumbnails[counter - (picture.length - 1)].setAttribute('class', 'pic');
+    editTheCurrentPic();
   }
   console.log(counter);
-  currentPic[0].style.backgroundImage =
-    thumbnails[counter].style.backgroundImage;
-    title[0].textContent = picture[counter].title;
-    paragraphs[0].textContent = picture[counter].text;
-};
-arrowRight[0].onclick = function changePictureToRight() {
+  thumbnails[counter].setAttribute('class', 'active');
+  thumbnails[counter + 1].setAttribute('class', 'pic');
+  /* thumbnails[counter].className = 'active'; */
+  editTheCurrentPic();
+}
+
+function changePictureToRight() {
   counter++;
   if (counter === picture.length) {
     counter = 0;
-    currentPic[0].style.backgroundImage =
-      thumbnails[counter].style.backgroundImage;
-      title[0].textContent = picture[counter].title;
-      paragraphs[0].textContent = picture[counter].text;
+    thumbnails[counter + (picture.length - 1)].setAttribute('class', 'pic');
+    editTheCurrentPic();
   }
   console.log(counter);
-  currentPic[0].style.backgroundImage =
-    thumbnails[counter].style.backgroundImage;
-    title[0].textContent = picture[counter].title;
-    paragraphs[0].textContent = picture[counter].text;
+  thumbnails[counter].setAttribute('class', 'active');
+  thumbnails[counter -1].setAttribute('class', 'pic');
+  editTheCurrentPic();
+}
+
+
+arrowLeft[0].onclick = () => {
+  changePictureToLeft();
 };
 
+arrowRight[0].onclick = () => {
+  changePictureToRight();
+};
 
 function onKeyPress(event) {
-    switch (event.keyCode) {
-        case 37:
-                counter--;
-                if (counter === -1) {
-                  counter = picture.length - 1;
-                  currentPic[0].style.backgroundImage =
-                    thumbnails[counter].style.backgroundImage;
-                    title[0].textContent = picture[counter].title;
-                    paragraphs[0].textContent = picture[counter].text;
-                }
-                console.log(counter);
-                currentPic[0].style.backgroundImage =
-                  thumbnails[counter].style.backgroundImage;
-                  title[0].textContent = picture[counter].title;
-                  paragraphs[0].textContent = picture[counter].text;
-            break;
-            case 39:
-                    counter++;
-                    if (counter === picture.length) {
-                      counter = 0;
-                      currentPic[0].style.backgroundImage =
-                        thumbnails[counter].style.backgroundImage;
-                        title[0].textContent = picture[counter].title;
-                        paragraphs[0].textContent = picture[counter].text;
-                    }
-                    console.log(counter);
-                    currentPic[0].style.backgroundImage =
-                      thumbnails[counter].style.backgroundImage;
-                      title[0].textContent = picture[counter].title;
-                      paragraphs[0].textContent = picture[counter].text;
-                break;
-            }
-        };
-document.body.addEventListener('keydown', onKeyPress);
+  switch (event.keyCode) {
+    case 37:
+      changePictureToLeft();
+      break;
+    case 39:
+      changePictureToRight();
+      break;
+  }
+}
+document.body.addEventListener("keydown", onKeyPress);

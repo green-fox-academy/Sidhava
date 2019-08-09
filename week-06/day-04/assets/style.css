@@ -48,15 +48,17 @@ main {
 }
 
 .currentPic {
-    display: flex; 
+    display: flex;
     flex-grow: 10;
-    align-items: flex-end
+    align-items: flex-end;
+    animation: alternate;
 }
 
 .info {
     background-color: rgba(0,0,0,0.5);
     width: 100%;
     height: 30%;
+    overflow: hidden;
 
     
 }
@@ -94,6 +96,20 @@ main {
 }
 
 .pic:hover {
+    border: 4px solid gainsboro;
+    transform: translateY(2px);
+    transition: .2s;
+    transform: scale(0.9);
+}
+
+.active {
+    width: 60px;
+    height: 60px;
+    background-size: cover;
+    border: 4px solid white;
+    margin: 5px 10px;
+    box-shadow: 200px 47px 64px -23px rgba(0,0,0,1);
+    transition: .2s;
     border: 4px solid gainsboro;
     transform: translateY(2px);
     transition: .2s;
