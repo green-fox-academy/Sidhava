@@ -51,12 +51,13 @@ paragraphs[0].textContent = picture[0].text;
 
 for (let i = 0; i < thumbnails.length; i++) {
   thumbnails[i].style.backgroundImage = `url("${picture[i].url}")`;
-
   thumbnails[i].onclick = function changeCurrentPic() {
     currentPic[0].style.backgroundImage = thumbnails[i].style.backgroundImage;
     title[0].textContent = picture[i].title;
     paragraphs[0].textContent = picture[i].text;
+    thumbnails[counter].setAttribute('class', 'pic');
     counter = i;
+    thumbnails[counter].setAttribute('class', 'active');
   };
 }
 
