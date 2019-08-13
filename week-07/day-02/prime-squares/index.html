@@ -54,6 +54,10 @@
         function primeOrNot() {
             let div = document.querySelectorAll('div');
             for (let i = 0; i < div.length; i++) {
+                if (i == 0 || i == 1){
+                div[i].setAttribute('class', 'not-prime');
+                continue;
+                }
                 (function (i) {
                     setTimeout(function () {
                 div[i].setAttribute('class', 'prime');
