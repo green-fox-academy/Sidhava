@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <button>clickme</button>
+    <script>
+
+        let counter = 0;
+        let button = document.querySelector('button');
+        function createP() {
+            counter++;
+            if (counter >= 3 && init(event) > 5000) {
+            let p = document.createElement('p');
+            p.textContent = 'alma';
+            document.body.appendChild(p);
+            }
+        }
+
+        function init(event) {
+            return event.timeStamp;
+        }
+
+        button.addEventListener('click', createP);
+        window.addEventListener('load', init);
+
+    </script>
+</body>
+
+</html>
