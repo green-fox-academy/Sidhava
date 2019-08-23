@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div>
+        <form action="/send" method="POST"></form>
+        <h4>What is your favourite pet?</h4>
+        <label for="dog">Dog</label>
+        <input type="radio" name="animal" id="dog" value="dog">
+        <label for="cat">Cat</label>
+        <input type="radio" name="animal" id="cat" value="cat">
+        <label for="fish">Viktor the goldfish</label>
+        <input type="radio" name="animal" id="fish" value="fish">
+        
+        <h4>Do you want to sign up for cat facts?</h4>
+
+        <label for="yes">Yes</label>
+        <input type="radio" name="choice" id="yes" value="true">
+        <label for="no">No</label>
+        <input type="radio" name="choice" id="no" value="false">
+        <input class='cats' type="submit" value="I love cats" disabled="true">
+        <input class='signup' type="submit" value="Sign up" disabled="true">
+        </form>
+
+    </div>
+    <script src="app.js"></script>
+</body>
+</html>
