@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <div>
+    </div>
+    <button>Gimme a joke</button>
+    <script type="text/javascript">
+        const url = 'http://api.icndb.com/jokes/random';
+        const button = document.querySelector('button');
+        const div = document.querySelector('div');
+
+        /* fetch(url)
+            .then(response => response.json())
+            .then(parsedResponse => button.addEventListener('click', () => {
+                if (document.querySelector('h1')) {
+                    return;
+                } else {
+                let h1 = document.createElement('h1');
+                h1.textContent = parsedResponse.value.joke;
+                div.appendChild(h1);
+                }})); */
+
+        button.addEventListener('click', () => {
+            fetch(url)
+            .then(response => response.json())
+            .then(clickedResponse => {
+                if (document.querySelector('h1')) {
+                    return;
+                } else {
+                let h1 = document.createElement('h1');
+                h1.textContent = clickedResponse.value.joke;
+                div.appendChild(h1);
+                }
+                
+            })
+            .catch(() => {
+                console.log(error);
+            })
+        })
+            
+
+
+    </script>
+</body>
+
+</html>
