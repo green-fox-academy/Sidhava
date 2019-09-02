@@ -6,12 +6,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
     <div>
+        <button>Gimme a joke</button>
     </div>
-    <button>Gimme a joke</button>
     <script type="text/javascript">
         const url = 'http://api.icndb.com/jokes/random';
         const button = document.querySelector('button');
@@ -33,7 +34,7 @@
             .then(response => response.json())
             .then(clickedResponse => {
                 if (document.querySelector('h1')) {
-                    return;
+                    document.querySelector('h1').textContent = clickedResponse.value.joke;
                 } else {
                 let h1 = document.createElement('h1');
                 h1.textContent = clickedResponse.value.joke;
