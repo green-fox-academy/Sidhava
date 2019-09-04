@@ -8,9 +8,9 @@ app.get('/groot', (req, res) => {
           translated: 'I am Groot!'
         });
       } else {
-        res.send({
-          error: "I am Groot!"
-        });
+          res.status(400).send({
+              error: "I am Groot!"
+            });
       }
     });
     
