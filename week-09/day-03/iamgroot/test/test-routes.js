@@ -27,3 +27,39 @@ test('groot endpoint2', (t) => {
       t.end();
   });
 });
+
+test('yondu endpoint', (t) => {
+  request(app)
+  .get('/yondu?distance=100.0&time=10.0')
+  .send({
+    distance: '100.0',
+    time: '10.0',
+    speed: 10
+  }) 
+  .end((err, res) => {
+      if (err) throw err;
+      t.same(res.body, {distance: '100.0',
+      time: '10.0',
+      speed: 10
+    });
+      t.equal(res.status, 200);
+      t.end();
+  });
+});
+
+test('yondu endpoint2', (t) => {
+  request(app)
+  .get('/yondu?distance=100.0&time=0')
+  .send({
+    distance: '100.0',
+    time: '0',
+    speed: 10
+  }) 
+  .end((err, res) => {
+      if (err) throw err;
+      t.same(res.body, { error: 'nem osztol nullával' 
+    });
+      t.equal(res.status, 400);
+      t.end();
+  });
+});
