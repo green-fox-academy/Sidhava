@@ -1,0 +1,151 @@
+* {
+    padding: 0;
+    margin: 0;
+    font-family: 'Lato', sans-serif;
+}
+
+body {
+    background-color: #EEEEEE;
+}
+
+header {
+    background-image: url(pexels.jpeg);
+    width: 100%;
+    height: 35vh;
+    letter-spacing: 2em;
+    font-size: 2em;
+    text-align: center;
+    color: rgba(255, 255, 255, 0.8);
+    line-height: 35vh;
+    margin-bottom: 10px;
+}
+
+.container {
+    display: flex;
+    width: 70%;
+    height: auto;
+    margin: auto;
+
+}
+
+main {
+    width: 65%;
+    background-color: #FFFFFF;
+    margin: 0 10px 10px 10px;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-auto-rows: minmax(100px, auto);
+}
+
+main > section {
+    display: flex;
+    width: 100%;
+}
+
+main > section + section {
+    border: 1px solid #EEEEEE;
+}
+
+.votes {
+    width: 15%;
+    background-image: url(upvote.png), url(downvote.png); 
+    background-position: top 20% right 50%, bottom 20% right 50%;
+    background-repeat: no-repeat, no-repeat;
+    text-align: center;
+    line-height: 100px;
+    color: #B4B4B4;
+    font-weight: 900;
+}
+
+.postcontent {
+    width: 85%;
+}
+
+.postcontent > h3 {
+    padding: 10px;
+}
+
+.postcontent > p {
+    padding-left: 10px; 
+    font-size: .9em; 
+}
+
+.postcontent > p > a {
+    color: ##C1E6F6;
+    text-decoration: none;
+}
+
+.postcontent > p + p {
+    padding-top: 5px;
+}
+
+.action {
+    margin: 0 10px;
+    color: #9F8D83;
+}
+
+aside {
+    width: 35%;
+    background: transparent;
+    margin: 0 10px 10px 5px;
+    height: 350px;
+}
+
+aside > a {
+    text-decoration: none;
+    width: 100%;
+    display: block;
+    padding: 10px 0;
+    font-size: 1em;
+    color: white;
+    text-align: center;
+    background-color: #4AA3DF;
+}
+
+aside > p {
+    text-decoration: none;
+    display: block;
+    padding: 10px 0;
+    padding-left: 10px;
+    font-size: 1em;
+    color: black;
+    background-color: #FBFBFB;
+    margin-top: 10px;
+}
+
+aside > p > a {
+    color: #4AA3DF;
+}
+
+aside > div {
+    background-color: #F5F5F5;
+    padding: 10px;  
+}
+
+aside > div > p {
+    text-align: center;
+    padding: 10px;
+}
+
+aside > div > ul {
+    list-style: square;
+    padding: 10px 20px;
+}
+
+@media screen and (max-width: 760px) {
+    .container {
+        flex-direction: column-reverse;
+        width: 100%;
+        margin: 0;
+    }
+
+    main {
+        width: 100%;
+    }
+
+    aside {
+        width: 100%;
+        height: 250px;
+    }
+}
+

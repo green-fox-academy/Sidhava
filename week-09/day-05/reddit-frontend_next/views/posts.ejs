@@ -1,0 +1,10 @@
+<% posts.forEach((post) => { %> 
+<section>
+        <div class="votes"><%= post.score %></div>
+        <div class="postcontent">
+            <h3><%= post.title %></h3>
+            <p>submitted<%= post.timestamp %> hours ago by <a href="#">RiddledWithSpades</a></p>
+            <p><a href="#">615 comments</a> <a class="action" href="#">delete</a> <a class="action" href="#">save</a></p>
+        </div>
+    </section>
+    <% });%>
