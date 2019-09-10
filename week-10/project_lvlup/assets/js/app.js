@@ -42,16 +42,11 @@ function getTracks(result) {
       if (event.target.innerHTML === element.title) {
         audio.setAttribute("src", element.path);
         audio.play();
-
         h3.innerHTML = element.title;
         p.innerHTML = element.artist;
       }
     });
   });
-}
-
-function playTrack(result) {
-  console.log(result);
 }
 
 addPlaylist.addEventListener("click", () => {
@@ -60,9 +55,14 @@ addPlaylist.addEventListener("click", () => {
   } else {
     let newRow = document.createElement("tr");
     let rowData = document.createElement("td");
+    /*     let form = document.createElement('form');
+    form.setAttribute('method', 'POST');
+    form.setAttribute('action', '/playlists'); */
     let input = document.createElement("input");
+    input.setAttribute("name", "newPlaylist");
     tbody[0].appendChild(newRow);
     newRow.appendChild(rowData);
+    /*   rowData.appendChild(form) */
     rowData.appendChild(input);
     input.focus();
     input.addEventListener("keypress", e => {
@@ -70,6 +70,16 @@ addPlaylist.addEventListener("click", () => {
         let inputvalue = input.value;
         rowData.removeChild(input);
         rowData.innerHTML = inputvalue;
+        fetch("/playlists", {
+          headers: {
+            /* 'Accept': 'application/json', */
+            'Content-type': 'application/json'
+          },
+          method: 'POST',
+          body: JSON.stringify({input: inputvalue})
+        })
+        .then(data => console.log('request success: ', data))
+        .catch(err => 'request failure: ', err);
       }
     });
   }

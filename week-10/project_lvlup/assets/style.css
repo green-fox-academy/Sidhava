@@ -133,6 +133,10 @@ tr:nth-child(odd) {
   cursor: pointer;
 }
 
+.active {
+  background-color: rgb(15, 153, 28);
+}
+
 .right {
   text-align: right;
   padding-right: 10px;
