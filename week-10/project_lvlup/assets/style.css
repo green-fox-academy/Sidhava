@@ -87,9 +87,11 @@ main {
 .playlist {
   grid-column: 1 / 6;
   grid-row: 5 / 10;
+  overflow: auto;
+  max-height: 240px;
 }
 
-table {
+.playlist > table {
   border-collapse: collapse;
   width: 100%;
 }
@@ -98,10 +100,18 @@ tr {
   height: 40px;
 }
 
+
 td {
   text-align: left;
   padding-left: 10px;
 }
+
+td:hover {
+  background-color: rgb(15, 153, 28);
+  color: white;
+  cursor: pointer;
+}
+
 
 tr:nth-child(odd) {
   background-color: #eaeaea;
@@ -110,6 +120,22 @@ tr:nth-child(odd) {
 .tracks {
   grid-column: 6 / 11;
   grid-row: 3 / 10;
+}
+
+.songs {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+.songs > tr:hover {
+  background-color: rgb(15, 153, 28);
+  color: white;
+  cursor: pointer;
+}
+
+.right {
+  text-align: right;
+  padding-right: 10px;
 }
 
 .controls {

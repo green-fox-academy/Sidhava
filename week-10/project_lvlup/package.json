@@ -13,6 +13,7 @@
   "dependencies": {
     "ejs": "^2.7.1",
     "express": "^4.17.1",
+    "mp3-length": "^1.0.0",
     "mysql": "^2.17.1"
   },
   "devDependencies": {

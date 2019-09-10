@@ -23,13 +23,13 @@
                 <tr>
                     <td>All tracks</td>
                 </tr>
-                <tr>
-                    <td>Favorites</td>
-                </tr>
             </table>
         </div>
         <div class="current">
-            <div class="current-song"></div>
+            <div class="current-song">
+                <h3 class="current-title"></h3>
+                <p class="current-artist"></p>
+            </div>
             <div class="actions">
                 <img src="plus-solid.svg" width="20px" height="20px">
                 <img src="star-solid.svg" alt="Add to Favorites" width="20px" height="20px">
@@ -40,13 +40,12 @@
             <img alt="logo" src="music-placeholder.png">
         </div>
         <div class="tracks">
-            <table>
-
+            <table class="songs">
             </table>
         </div>
         <div class="controls">
             <audio controls>
-                    <source src="" type="audio/mpeg">
+                    <source src="./musics/firstsong.mp3" type="audio/mpeg">
             </audio>
         </div>
     </main>
