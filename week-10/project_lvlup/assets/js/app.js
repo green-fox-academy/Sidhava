@@ -32,6 +32,23 @@ function getPlaylists(result) {
       rowData.appendChild(img);
     }
   });
+  result.forEach(element => {
+    document.querySelector("table").addEventListener("click", e => {
+      let playlist = e.target.parentElement.className;
+      if (playlist === element.playlist) {
+      let toBeDeleted = e.target.parentElement.parentElement;
+      let parentOfToBeDeleted = toBeDeleted.parentElement;
+      deletePlaylist(playlist);
+      parentOfToBeDeleted.removeChild(toBeDeleted);
+      }
+    });
+  
+    function deletePlaylist(id) {
+      fetch(`playlists/${id}`, {
+        method: "DELETE"
+      });
+    }
+  });
 }
 
 function getTracks(result) {
@@ -75,6 +92,12 @@ addPlaylist.addEventListener("click", () => {
         let inputvalue = input.value;
         rowData.removeChild(input);
         rowData.innerHTML = inputvalue;
+        let img = document.createElement("img");
+        img.setAttribute("src", "trash-solid.svg");
+        img.setAttribute("width", "20px");
+        img.setAttribute("height", "20px");
+        img.className = "trash";
+        rowData.appendChild(img);
         fetch("/playlists", {
           headers: {
             "Content-type": "application/json"
@@ -88,17 +111,3 @@ addPlaylist.addEventListener("click", () => {
     });
   }
 });
-
-
-document.querySelector('table').addEventListener('click', (e) => {
-let playlist = e.target.parentElement.className;
-deletePlaylist(playlist);
-})
-
-function deletePlaylist(id) {
-  fetch(`playlists/${id}`,{
-    method: 'DELETE'
-  })
-}
-
-
