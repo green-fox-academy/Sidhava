@@ -20,7 +20,7 @@ app.get("/", (req, res) => {
 });
 
 app.get("/playlists", (req, res) => {
-  connection.query("select playlist from playlists", (err, rows) => {
+  connection.query("select id, playlist from playlists", (err, rows) => {
     res.send(rows);
   });
 });
@@ -34,7 +34,7 @@ app.get("/playlist-tracks", (req, res) => {
 app.post("/playlists", (req, res) => {
   console.log(req.body);
   connection.query(
-    'insert into playlists (playlist) values (?)',
+    "insert into playlists (playlist) values (?)",
     [req.body.input],
     (err, rows) => {
       if (err) {
@@ -47,13 +47,28 @@ app.post("/playlists", (req, res) => {
   res.redirect("/");
 });
 
-app.delete('/playlists/:playlist', (req, res) => {
-  connection.query('delete from playlists where playlist = ?', [req.params.playlist], (err, rows) => {
-    if (err) {
-      console.log(err);
+app.delete("/playlists/:playlist", (req, res) => {
+  connection.query(
+    "delete from playlists where playlist = ?",
+    [req.params.playlist],
+    (err, rows) => {
+      if (err) {
+        console.log(err);
+      }
     }
-  })
-})
+  );
+});
+
+app.get('/playlist-tracks/:playlist_id'),
+  (req, res) => {
+    connection.query(
+      'select * from tracks, playlists where tracks.playlist_id = ?',
+      [req.params.playlist_id],
+      (err, rows) => {
+        res.send(rows);
+      }
+    );
+  };
 
 connection.connect(err => {
   if (err) throw err;

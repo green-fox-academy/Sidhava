@@ -21,6 +21,7 @@ function getPlaylists(result) {
     let rowData = document.createElement("td");
     rowData.innerHTML = element.playlist;
     rowData.className = element.playlist;
+    rowData.id = element.id;
     tbody[0].appendChild(newRow);
     newRow.appendChild(rowData);
     if (rowData.innerHTML !== "Favorites") {
@@ -35,14 +36,18 @@ function getPlaylists(result) {
   result.forEach(element => {
     document.querySelector("table").addEventListener("click", e => {
       let playlist = e.target.parentElement.className;
+      let playlistForTracks = e.target.id;
       if (playlist === element.playlist) {
-      let toBeDeleted = e.target.parentElement.parentElement;
-      let parentOfToBeDeleted = toBeDeleted.parentElement;
-      deletePlaylist(playlist);
-      parentOfToBeDeleted.removeChild(toBeDeleted);
+        let toBeDeleted = e.target.parentElement.parentElement;
+        let parentOfToBeDeleted = toBeDeleted.parentElement;
+        deletePlaylist(playlist);
+        parentOfToBeDeleted.removeChild(toBeDeleted);
+      } else if (playlistForTracks === element.id) {
+        fetch(`playlist-tracks/${element.id}`)
+          .then(answer => answer.json())
+          .then(result => getTracks(result));
       }
     });
-  
     function deletePlaylist(id) {
       fetch(`playlists/${id}`, {
         method: "DELETE"
