@@ -20,8 +20,17 @@ function getPlaylists(result) {
     let newRow = document.createElement("tr");
     let rowData = document.createElement("td");
     rowData.innerHTML = element.playlist;
+    rowData.className = element.playlist;
     tbody[0].appendChild(newRow);
     newRow.appendChild(rowData);
+    if (rowData.innerHTML !== "Favorites") {
+      let img = document.createElement("img");
+      img.setAttribute("src", "trash-solid.svg");
+      img.setAttribute("width", "20px");
+      img.setAttribute("height", "20px");
+      img.className = "trash";
+      rowData.appendChild(img);
+    }
   });
 }
 
@@ -55,14 +64,10 @@ addPlaylist.addEventListener("click", () => {
   } else {
     let newRow = document.createElement("tr");
     let rowData = document.createElement("td");
-    /*     let form = document.createElement('form');
-    form.setAttribute('method', 'POST');
-    form.setAttribute('action', '/playlists'); */
     let input = document.createElement("input");
     input.setAttribute("name", "newPlaylist");
     tbody[0].appendChild(newRow);
     newRow.appendChild(rowData);
-    /*   rowData.appendChild(form) */
     rowData.appendChild(input);
     input.focus();
     input.addEventListener("keypress", e => {
@@ -72,15 +77,28 @@ addPlaylist.addEventListener("click", () => {
         rowData.innerHTML = inputvalue;
         fetch("/playlists", {
           headers: {
-            /* 'Accept': 'application/json', */
-            'Content-type': 'application/json'
+            "Content-type": "application/json"
           },
-          method: 'POST',
-          body: JSON.stringify({input: inputvalue})
+          method: "POST",
+          body: JSON.stringify({ input: inputvalue })
         })
-        .then(data => console.log('request success: ', data))
-        .catch(err => 'request failure: ', err);
+          .then(data => console.log("request success: ", data))
+          .catch(err => "request failure: ", err);
       }
     });
   }
 });
+
+
+document.querySelector('table').addEventListener('click', (e) => {
+let playlist = e.target.parentElement.className;
+deletePlaylist(playlist);
+})
+
+function deletePlaylist(id) {
+  fetch(`playlists/${id}`,{
+    method: 'DELETE'
+  })
+}
+
+

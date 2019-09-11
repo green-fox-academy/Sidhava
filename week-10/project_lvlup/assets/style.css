@@ -27,8 +27,8 @@ main {
 }
 
 .logo > h3 {
-    float: right;
-    line-height: 120px;
+  float: right;
+  line-height: 120px;
 }
 
 .artwork {
@@ -50,18 +50,18 @@ main {
 }
 
 .current-song {
-    flex: 8;
-    padding-left: 10px;
+  flex: 8;
+  padding-left: 10px;
 }
 
 .actions {
-    flex: 2;
+  flex: 2;
 }
 
 .actions > p {
-    display: inline;
-    font-size: 40px;
-    color: #B4B4B4;
+  display: inline;
+  font-size: 40px;
+  color: #b4b4b4;
 }
 
 .playlist-header {
@@ -100,10 +100,14 @@ tr {
   height: 40px;
 }
 
-
 td {
   text-align: left;
   padding-left: 10px;
+}
+
+td > img {
+  float: right;
+  padding-right: 10px;
 }
 
 td:hover {
@@ -111,7 +115,6 @@ td:hover {
   color: white;
   cursor: pointer;
 }
-
 
 tr:nth-child(odd) {
   background-color: #eaeaea;
@@ -148,9 +151,8 @@ tr:nth-child(odd) {
   display: flex;
   justify-content: center;
   align-items: center;
-
 }
 
 .controls > audio {
-    width: 100%;
+  width: 100%;
 }

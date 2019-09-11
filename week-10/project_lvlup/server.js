@@ -47,6 +47,14 @@ app.post("/playlists", (req, res) => {
   res.redirect("/");
 });
 
+app.delete('/playlists/:playlist', (req, res) => {
+  connection.query('delete from playlists where playlist = ?', [req.params.playlist], (err, rows) => {
+    if (err) {
+      console.log(err);
+    }
+  })
+})
+
 connection.connect(err => {
   if (err) throw err;
 });
