@@ -1,40 +1,40 @@
-const express = require("express");
-const mysql = require("mysql");
+const express = require('express');
+const mysql = require('mysql');
 const PORT = 3000;
 
 const app = express();
 
-app.set("view engine", "ejs");
-app.use(express.static("assets"));
+app.set('view engine', 'ejs');
+app.use(express.static('assets'));
 app.use(express.json());
 
 const connection = mysql.createConnection({
-  host: "localhost",
-  user: "root",
-  password: "password",
-  database: "musicplayer"
+  host: 'localhost',
+  user: 'root',
+  password: 'password',
+  database: 'musicplayer'
 });
 
-app.get("/", (req, res) => {
-  res.render("index");
+app.get('/', (req, res) => {
+  res.render('index');
 });
 
-app.get("/playlists", (req, res) => {
-  connection.query("select id, playlist from playlists", (err, rows) => {
+app.get('/playlists', (req, res) => {
+  connection.query('select id, playlist from playlists', (err, rows) => {
     res.send(rows);
   });
 });
 
-app.get("/playlist-tracks", (req, res) => {
-  connection.query("select * from tracks", (err, rows) => {
+app.get('/playlist-tracks', (req, res) => {
+  connection.query('select * from tracks', (err, rows) => {
     res.send(rows);
   });
 });
 
-app.post("/playlists", (req, res) => {
+app.post('/playlists', (req, res) => {
   console.log(req.body);
   connection.query(
-    "insert into playlists (playlist) values (?)",
+    'insert into playlists (playlist) values (?)',
     [req.body.input],
     (err, rows) => {
       if (err) {
@@ -44,12 +44,12 @@ app.post("/playlists", (req, res) => {
       }
     }
   );
-  res.redirect("/");
+  res.redirect('/');
 });
 
-app.delete("/playlists/:playlist", (req, res) => {
+app.delete('/playlists/:playlist', (req, res) => {
   connection.query(
-    "delete from playlists where playlist = ?",
+    'delete from playlists where playlist = ?',
     [req.params.playlist],
     (err, rows) => {
       if (err) {
@@ -59,16 +59,19 @@ app.delete("/playlists/:playlist", (req, res) => {
   );
 });
 
-app.get('/playlist-tracks/:playlist_id'),
-  (req, res) => {
-    connection.query(
-      'select * from tracks, playlists where tracks.playlist_id = ?',
-      [req.params.playlist_id],
-      (err, rows) => {
-        res.send(rows);
+app.get('/playlist-tracks/:playlist_id', (req, res) => {
+  connection.query(
+    'select * from tracks where playlist_id = ?',
+    [req.params.playlist_id],
+    (err, rows) => {
+      if (err) {
+        console.log(err);
+        return;
       }
-    );
-  };
+      res.send(rows);
+    }
+  );
+});
 
 connection.connect(err => {
   if (err) throw err;
